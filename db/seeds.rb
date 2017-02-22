@@ -8,7 +8,7 @@ slammer_1 = category_1.items.create(
         title: "OJ Simpson Slammer",
         price: 42.34,
         description: "OJ Simpson in the slammer, on a slammer!",
-        image_path: '/app/assets/images/OJ_slammer.jpg',
+        image_path: 'OJ_slammer.jpg',
         )
 slammer_2 = category_1.items.create(
         title: "Holographic Lion Slammer",
