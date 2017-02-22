@@ -11,8 +11,8 @@ require 'rails_helper'
 
           expect(page).to have_content("Pogs")
 
-           expect(page).to have_content("McDonald's Rangers")
-           expect(page).to have_css("img[src*='power_rangers.jpg']")
+          expect(page).to have_content("McDonald's Rangers")
+          expect(page).to have_css("img[src*='power_rangers.jpg']")
 
           expect(page).to have_content("Power Rangers Packet")
           expect(page).to have_css("img[src*='power_rangers_packet.png']")
