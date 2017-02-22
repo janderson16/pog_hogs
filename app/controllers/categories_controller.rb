@@ -1,3 +1,1 @@
-class CategoriesController < ApplicationController
 
-end
