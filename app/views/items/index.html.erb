@@ -1,0 +1,10 @@
+<h1>Everything We Got!</h1>
+
+<% @categories.each do |category| %>
+<h3> <%= category.title %> </h3>
+        <% category.items.each do |item| %>
+          <%= item.title %>
+          <%= item.image_path %>
+          <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+        <% end %>
+  <% end %>
