@@ -1,4 +1,4 @@
-
+<h1>Everything We Got!</h1>
 
 <div>
   <% @categories.each do |category| %> 
@@ -6,6 +6,7 @@
           <% category.items.each do |item| %>
               <h3 class="item"><%= link_to  item.title, item_path(item) %></h3> 
                       <%= image_tag(item.image_path) %>
+                      <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
           <% end %>
     <% end %>
 </div>
