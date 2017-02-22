@@ -1,0 +1,12 @@
+<h1><%= @category.title %></h1>
+
+<ul>
+  <% @category.items.each do |item| %>
+    <li>
+    <h3><%= item.title %></h3><br>
+    <%= item.image_path %><br>
+    Price: <%= item.price %>
+    <%# Needs button for "Add to cart" here %>
+    </li>
+  <% end %>
+</ul>
