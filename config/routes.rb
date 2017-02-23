@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   get '/dashboard', to: "users#show"
+  
   resources :categories do
     resources :items, except: [:index]
   end
