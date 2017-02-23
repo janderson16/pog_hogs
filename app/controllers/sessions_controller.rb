@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to "/dashboard"
       flash[:notice] = "Logged in as #{user.first_name} #{user.last_name}"
     else
-      flash[:notice] = "Unknown email and/or password"
+      flash[:notice] = "Incorrect email and/or password"
       redirect_to login_path
     end
   end
