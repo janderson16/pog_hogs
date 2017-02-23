@@ -1,6 +1,15 @@
 <h1>Your Cart</h1>
 
-<% @cart.contents.each do |id, quantity| %>
-Item: <%= Item.find(id).title %><br>
-Quantity: <%= quantity %><br>
-<% end %>
+<div>
+  <!-- change this to inventory.each do -->
+  <!-- will pass the item / quantity as a key value pair -->
+  <% @cart.contents.each do |id, quantity| %>
+      <!-- Item: <%#= Item.find(id).title %><br> -->
+      <div class="cart_item">
+        Item: <%= item_lookup(id).title %>
+        Quantity: <%= quantity %>
+        Price: <%=  %>
+        Sub Total: <%=  %>
+      </div>
+  <% end %>
+</div>
