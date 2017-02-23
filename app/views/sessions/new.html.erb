@@ -1,0 +1,14 @@
+<h1>Welcome to PogHogs</h1><br>
+<h3>Please log in below</h3><br>
+<h4> <%= link_to "Create account", new_user_path %> </h4>
+
+<%= form_for :session, url: login_path do |f| %>
+
+<%= f.label :email %>
+<%= f.text_field :email %><br>
+
+<%= f.label :password %>
+<%= f.password_field :password %><br><br>
+
+<%= f.submit "Login" %>
+<% end %>
