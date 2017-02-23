@@ -2,9 +2,9 @@
 
 <div>
   <% @categories.each do |category| %>
-      <h1 class="category"> <%= category.title %></h1>
+      <h2 class="category"> <%= category.title %></h2>
           <% category.items.each do |item| %>
-              <h3 class="item"><%= link_to  item.title, category_item_path(category, item) %></h3>
+              <h3 class="item"><%= link_to  item.title, category_item_path(category, item) %></h3> 
                       <%= image_tag(item.image_path) %>
                       <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
           <% end %>
