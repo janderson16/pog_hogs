@@ -19,6 +19,7 @@ require 'rails_helper'
 
       fill_in "session[email]", with: "johndoe@gmail.com"
       fill_in "session[password]", with: "password"
+      save_and_open_
       click_on "Log In"
 
       expect(current_path).to '/dashboard'
