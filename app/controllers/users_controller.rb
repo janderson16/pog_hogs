@@ -14,8 +14,12 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to PogHogs #{@user.first_name}"
       session[:user_id] = @user.id
       redirect_to '/dashboard'
+    elsif User.exists?(['email LIKE ?', "%#{@user.email}%"])
+      flash[:notice] = "Email already registered with an account!"
+      redirect_to new_user_path
     else
-      redirect_to '/login'
+      flash[:notice] = "Please check that all fields were filled in correctly."
+      redirect_to new_user_path
     end
   end
 

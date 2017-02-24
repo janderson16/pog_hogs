@@ -1,6 +1,6 @@
 <h1>Your Cart</h1>
 
-<div>
+<!-- <div>
   <!-- change this to inventory.each do -->
   <!-- will pass the item / quantity as a key value pair -->
   <% @cart.contents.each do |id, quantity| %>
@@ -11,9 +11,22 @@
           Price: <%=  %>
           Sub Total: <%=  %>
           <%= form_for(@things) do |f| %>
-              
+
           <% end %>
-            
+
       </div>
   <% end %>
-</div>
+</div> -->
+
+
+<% @cart.contents.each do |id, quantity| %>
+Item: <%= Item.find(id).title %><br>
+Quantity: <%= quantity %><br>
+<% end %>
+
+<%- unless current_user == nil -%>
+  <%= button_to "Proceed to checkout"%>
+<%- else -%>
+  <%= button_to "Log In to Checkout", login_path, method: :get %>
+  <small><%= link_to "Create Account", new_user_path %></small>
+  <%- end -%>
