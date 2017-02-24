@@ -5,11 +5,15 @@
   <!-- will pass the item / quantity as a key value pair -->
   <% @cart.contents.each do |id, quantity| %>
       <!-- Item: <%#= Item.find(id).title %><br> -->
-      <div class="cart_item">
-        Item: <%= item_lookup(id).title %>
-        Quantity: <%= quantity %>
-        Price: <%=  %>
-        Sub Total: <%=  %>
+      <div class="cart_item" id="#{id}">
+          Item: <%= item_lookup(id).title %>
+          Quantity: <%= quantity %>
+          Price: <%=  %>
+          Sub Total: <%=  %>
+          <%= form_for(@things) do |f| %>
+              
+          <% end %>
+            
       </div>
   <% end %>
 </div>

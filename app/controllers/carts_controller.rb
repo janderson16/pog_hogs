@@ -6,7 +6,6 @@ class CartsController < ApplicationController
   def create
     item = Item.find(params[:item_id])
     @cart.add_item(item.id)
-    byebug
     session[:cart] = @cart.contents
     flash[:notice] = "You now have #{pluralize(@cart.contents[item.id.to_s], item.title)}."
     redirect_back(fallback_location: items_path)

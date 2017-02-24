@@ -13,7 +13,7 @@ require 'rails_helper'
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit root_path
-
+      save_and_open_page
       click_on "Log In"
       expect(current_path).to eq '/login'
 
