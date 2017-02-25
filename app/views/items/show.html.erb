@@ -1,0 +1,8 @@
+<h1><%= @item.title %></h1>
+
+<%= image_tag "@item.image_path" %>
+<%= @item.description %>
+$<%= @item.price %>
+<%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn btn-danger" %>
+
+<%= link_to "Back to #{@item.category}", category_path(@item.category) %>
