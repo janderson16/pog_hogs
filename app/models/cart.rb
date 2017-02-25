@@ -1,8 +1,9 @@
 class Cart
-  attr_reader :contents
+  attr_reader :contents, :cart_items
 
   def initialize(initial_contents)
     @contents = initial_contents || {}
+    @cart_items = {}
   end
 
   def total_count
@@ -21,11 +22,10 @@ class Cart
   def cart_items
     #creates a hash of item objects and their quantity
     #can pass to the controller
-    cart_items = {}
     @contents.each do |id, quantity|
-      cart_items[Item.find(id)] = quantity
+      @cart_items[Item.find(id)] = quantity
     end
-    cart_items
+    @cart_items
   end
 
   def update_cart_items(quantity)
@@ -38,10 +38,12 @@ class Cart
     #add it to the existing contents hash
   end
 
-  def sub_total
-    #takes the item price and multiplies it by the quantity from
-    #the inventory hash
-    item.price * @inventory[item]
+  def total
+    sum = 0
+    @cart_items.each do |item, quantity|
+      sum += (item.price * quantity)
+    end
+    sum
   end
 
 
