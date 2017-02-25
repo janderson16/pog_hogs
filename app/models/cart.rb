@@ -19,9 +19,9 @@ class Cart
   end
 
   def subtotal
-    @totals = @contents.map do |id, quantity|
+    totals = @contents.map do |id, quantity|
       Item.find(id).price * quantity
     end
-    @totals.reduce(:+).round(2)
+    totals.reduce(:+).round(2)
   end
 end
