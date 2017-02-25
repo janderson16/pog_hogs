@@ -61,7 +61,6 @@ require 'rails_helper'
           expect(page).to have_content(3)
         end
 
-        save_and_open_page
-        expect(page).to have_content("")
+        expect(page).to have_content(9)
      end
   end
