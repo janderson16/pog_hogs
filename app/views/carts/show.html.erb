@@ -4,9 +4,11 @@
 Item: <%= @items.find(id).title %><br>
 Quantity: <%= quantity %><br>
 Price <%= @items.find(id).price %><br>
-<% end %>
+<% end %><br>
 
-Subtotal: <%= @cart.subtotal %>
+<div class="subtotal">
+  Subtotal: $<%= @cart.subtotal %><br>
+</div>
 <%- unless current_user == nil -%>
   <%= button_to "Proceed to checkout"%>
 <%- else -%>
