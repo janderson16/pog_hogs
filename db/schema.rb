@@ -23,17 +23,13 @@ ActiveRecord::Schema.define(version: 20170225005109) do
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
-    t.float    "price",            default: 0.0
+    t.float    "price",       default: 0.0
     t.string   "description"
     t.string   "image_path"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "category_id"
-    t.string   "pic_file_name"
-    t.string   "pic_content_type"
-    t.integer  "pic_file_size"
-    t.datetime "pic_updated_at"
-    t.integer  "status",           default: 0
+    t.integer  "status",      default: 0
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
 
