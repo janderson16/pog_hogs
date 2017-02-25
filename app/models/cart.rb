@@ -18,14 +18,14 @@ class Cart
     contents[item_id.to_s]
   end
 
-
-  def inventory
+  def cart_items
     #creates a hash of item objects and their quantity
     #can pass to the controller
-    @inventory = {}
-    @cart.contents.each do |id, quantity|
-      @inventory[Item.find(id)] = quantity
+    cart_items = {}
+    @contents.each do |id, quantity|
+      cart_items[Item.find(id)] = quantity
     end
+    cart_items
   end
 
   def sub_total
