@@ -7,7 +7,7 @@ require 'rails_helper'
                                       title: "Lion Holographic Slammer",
                                       price: 3.0,
                                       description: "1/4 thick brass, saw-shaped slammer with holographic lion",
-                                      image_path: "http://www.the90swereawesome.com/wp-content/uploads/2014/08/intricate.jpg"
+                                      image_path: "http://www.the90swereawesome.com/wp-content/uploads/2014/08/intricate.jpg",
                                       )
     end
 

@@ -10,7 +10,7 @@ describe "User cannot add a retired item to their cart" do
     expect(page).to have_content("McDonald's Power Ranger Coins")
     expect(page).to have_content("$24.99")
     expect(page).to_not have_button("Add to Cart")
-    expect(page).to have_button("Item Retired")
+    expect(page).to have_content("Item Retired")
 
   end
 end
