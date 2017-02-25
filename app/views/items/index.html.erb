@@ -4,11 +4,17 @@
     <div class="Row">
       <h3 class="category"> <%= category.title %></h3>
           <% category.items.each do |item| %>
+
             <div class="Column" style="text-align: center;">
               <h2 class="item"><%= link_to  item.title, category_item_path(category, item) %></h2>
               <%= image_tag(item.image_path) %>
-              <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+              <%- unless item.status == 1 -%>
+                <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+              <% else %>
+                <h4 class="Item retired">Item Retired</h4>
+              <% end %>
             </div>
+
           <% end %>
     </div>
   <% end %>

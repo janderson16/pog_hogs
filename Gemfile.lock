@@ -215,6 +215,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (~> 3.0.5)
+  paperclip (~> 5.0.0)
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.1)
