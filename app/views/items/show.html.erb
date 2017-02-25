@@ -5,4 +5,4 @@
 $<%= @item.price %>
 <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn btn-danger" %>
 
-<%= link_to "Back to #{@item.category}", category_path(@item.category) %>
+<%= link_to "Back to #{@item.category.title}", category_path(@item.category) %>
