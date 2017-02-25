@@ -17,4 +17,11 @@ class Cart
   def count_of(item_id)
     contents[item_id.to_s]
   end
+
+  def subtotal
+    totals = @contents.map do |id, quantity|
+      Item.find(id).price * quantity
+    end
+    totals.reduce(:+).round(2)
+  end
 end
