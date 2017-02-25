@@ -15,8 +15,10 @@ Rails.application.routes.draw do
     resources :items, except: [:index]
   end
 
-  resources :carts, only: [:index, :create]
+  get '/carts', to: 'carts#index'
+  post '/carts', to: 'carts#create'
   get '/cart', to: 'carts#show'
+  put '/cart', to: 'carts#update'
 
   resources :items, only: [:index]
 

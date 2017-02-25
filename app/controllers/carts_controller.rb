@@ -14,8 +14,8 @@ class CartsController < ApplicationController
   end
 
   def update
-    byebug
-    @cart_items = @cart.cart_items
+    @cart.contents[params[:id]] = params[:update].to_i
+    redirect_to cart_path
   end
 
 end

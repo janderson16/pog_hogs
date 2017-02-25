@@ -5,12 +5,15 @@
       <div class="cart_item">
           Item: <%= item.title %>
           Quantity: <%= quantity %>
-          byebug
-            <%= form_for item do |f| %>
-                <%=  f.label :quantity %>
-                <%=  f.text_field :quantity %>
+            <%= form_tag('/cart', id: item.id, method: :put) do %>
+                <div>
+                  <%= hidden_field_tag :id, "#{item.id}" %>
+                  <%= text_field_tag :update %>
+                  <%=  submit_tag 'Update Quantity' %>
+                </div>
             <% end %>
           Price: <%= item.price  %>
+          Sub-Total: <%= (item.price * quantity) %>
       </div>
   <% end %>
 </div>

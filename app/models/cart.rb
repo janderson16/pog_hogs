@@ -28,10 +28,22 @@ class Cart
     cart_items
   end
 
+  def update_cart_items(quantity)
+    #passes a hash
+    contents[item_id.to_s] = quantity
+  end
+
+  def add_items_to_cart
+    #can take new input from params for the item id and 
+    #add it to the existing contents hash
+  end
+
   def sub_total
     #takes the item price and multiplies it by the quantity from
     #the inventory hash
     item.price * @inventory[item]
   end
+
+
 
 end

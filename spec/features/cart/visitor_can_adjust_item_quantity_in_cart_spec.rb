@@ -23,37 +23,41 @@ require 'rails_helper'
             expect(page).to have_content(1)
           end
 
+        # save_and_open_page
     #And when I increase the quantity
         within(".cart_item:nth-child(1)") do
-          fill_in('quantity', :with => 2)
+          fill_in('update', :with => 2)
+          click_on "Update Quantity"
         end
 
         expect(current_path).to eq(cart_path)
 
     #And that item's quantity should reflect the increase
         within(".cart_item:nth-child(1)") do
-          expect(page).to have_content(1)
+          expect(page).to have_content("Sub-Total")
+          expect(page).to have_content(2)
         end
 
     #And the subtotal for that item should increase
         within(".cart_item:nth-child(1)") do
-          expect(sub_total).to equal(2)
+          expect(page).to have_content(2)
         end
 
     #And the total for the cart should match that increase
-        expect(page).to have_content("total")
+        expect(page).to have_content("Total")
 
     #And when I decrease the quantity
-       within(".cart_item div:nth-child(1)") do
-          fill_in('quantity', :with => 3)
+       within(".cart_item:nth-child(1)") do
+          fill_in('update', :with => 3)
+          click_on "Update Quantity"
         end
 
     #Then my current page should be '/cart'
         expect(current_path).to eq(cart_path)
 
     #And that item's quantity should reflect the decrease
-        within(".cart_item div:nth-child(1)") do
-          expect("Sub-total").to equal(2)
+        within(".cart_item:nth-child(1)") do
+          expect(page).to have_content(3)
         end
      end
   end
