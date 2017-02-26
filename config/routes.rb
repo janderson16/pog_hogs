@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
+  namespace :admin do
+    get 'dashboard', to: "dashboard#dashboard"
+  end
+
   resources :users, only: [:new, :create]
   get '/dashboard', to: "users#show"
-
+  
   #resources :categories, path: ''
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
@@ -21,7 +25,5 @@ Rails.application.routes.draw do
   put '/cart', to: 'carts#update'
 
   resources :items, only: [:index]
-
   resources :orders, only: [:index, :show, :create]
-
 end

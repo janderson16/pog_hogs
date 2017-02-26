@@ -35,7 +35,8 @@ class Cart
     @cart_items.each do |item, quantity|
       sum += (item.price * quantity)
     end
-    sum
+    sum.round(2)
   end
+
 
 end

@@ -3,19 +3,18 @@
 <div class="cart_list">
   <% @cart_items.each do |item, quantity| %>
       <div class="cart_item">
-          Item: <%= item.title %>
-          Quantity: <%= quantity %>
+          Item: <%= item.title %><br>
+          Quantity: <%= quantity %><br>
             <%= form_tag('/cart', id: item.id, method: :put) do %>
                 <div>
                   <%= hidden_field_tag :id, "#{item.id}" %>
                   <%= text_field_tag :update %>
-                  <%=  submit_tag 'Update Quantity' %>
+                  <%=  submit_tag 'Update Quantity' %><br>
                 </div>
             <% end %>
-          Price: <%= item.price  %>
-          Sub-Total: <%= (item.price * quantity) %>
+          Price: <%= item.price  %><br>
+          Subtotal: <%= (item.price * quantity) %><br>
       </div>
-      Total: <%= @cart.total %>
   <% end %>
 </div>
 

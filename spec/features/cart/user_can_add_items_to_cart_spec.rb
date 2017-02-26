@@ -19,8 +19,8 @@ require 'rails_helper'
 
         expect(page).to have_content "Item: Lion Holographic Slammer"
         expect(page).to have_content "Quantity: 1"
-        within("div.subtotal") do
-          expect(page).to have_content "Subtotal: $3.29"
+        within("div.total") do
+          expect(page).to have_content "Total: $3.29"
         end
     end
   end
