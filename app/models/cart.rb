@@ -30,9 +30,6 @@ class Cart
     contents[item_id.to_s] = quantity
   end
 
-  def delete_cart_item
-  end
-
   def total
     sum = 0
     @cart_items.each do |item, quantity|
