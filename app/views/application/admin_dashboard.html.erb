@@ -6,13 +6,3 @@
 <p>First Name: <%= current_user.first_name %> </p>
 <p>Last Name: <%= current_user.last_name %> </p>
 <p>Email: <%= current_user.email %> </p>
-
-
-<%= form_for user_path(current_user) do |f| %>
-<%= f.text_field :first_name %>
-<%= f.text_field :last_name %>
-<%= f.text_field :email %>
-<%= f.password_field :password, placeholder: "New Password"%>
-<%= f.password_field :password_digest, placeholder: "confirm password" %>
-<%= f.submit %>
-<% end %>
