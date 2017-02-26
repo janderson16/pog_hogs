@@ -18,7 +18,6 @@ require 'rails_helper'
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit edit_user_path(admin)
-      save_and_open_page
       expect(page).to have_xpath("//input[@value='Samuel']")
 
       visit '/users/2/edit'
