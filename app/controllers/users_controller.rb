@@ -23,6 +23,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      flash[:success] = "Your Profile has been updated."
+      if @user.role == 'admin'
+        redirect_to admin_dashboard_path
+      else
+        redirect_to '/dashboard'
+      end
+    else
+      redirect_to :edit
+    end
+  end
   private
 
   def user_params
