@@ -6,7 +6,7 @@ Quantity: <%= quantity %><br>
 <% end %>
 
 <%- unless current_user == nil -%>
-  <%= button_to "Proceed to checkout"%>
+  <%= button_to "Proceed to checkout", orders_path, method: :post %>
 <%- else -%>
   <%= button_to "Log In to Checkout", login_path, method: :get %>
   <small><%= link_to "Create Account", new_user_path %></small>
