@@ -10,8 +10,12 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart.contents
-    @items = Item.all
+    @cart_items = @cart.cart_items
+  end
+
+  def update
+    @cart.contents[params[:id]] = params[:update].to_i
+    redirect_to cart_path
   end
 
 end

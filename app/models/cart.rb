@@ -1,8 +1,9 @@
 class Cart
-  attr_reader :contents
+  attr_reader :contents, :cart_items
 
   def initialize(initial_contents)
     @contents = initial_contents || {}
+    @cart_items = {}
   end
 
   def total_count
@@ -18,10 +19,23 @@ class Cart
     contents[item_id.to_s]
   end
 
-  def subtotal
-    totals = @contents.map do |id, quantity|
-      Item.find(id).price * quantity
+  def cart_items
+    @contents.each do |id, quantity|
+      @cart_items[Item.find(id)] = quantity
     end
-    totals.reduce(:+).round(2)
+    @cart_items
   end
+
+  def update_cart_items(quantity)
+    contents[item_id.to_s] = quantity
+  end
+
+  def total
+    sum = 0
+    @cart_items.each do |item, quantity|
+      sum += (item.price * quantity)
+    end
+    sum
+  end
+
 end
