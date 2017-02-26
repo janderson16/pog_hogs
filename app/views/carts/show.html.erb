@@ -1,13 +1,26 @@
 <h1>Your Cart</h1>
 
-<% @cart.contents.each do |id, quantity| %>
-Item: <%= @items.find(id).title %><br>
-Quantity: <%= quantity %><br>
-Price <%= @items.find(id).price %><br>
-<% end %><br>
+<div class="cart_list">
+  <% @cart_items.each do |item, quantity| %>
+      <div class="cart_item">
+          Item: <%= item.title %>
+          Quantity: <%= quantity %>
+            <%= form_tag('/cart', id: item.id, method: :put) do %>
+                <div>
+                  <%= hidden_field_tag :id, "#{item.id}" %>
+                  <%= text_field_tag :update %>
+                  <%=  submit_tag 'Update Quantity' %>
+                </div>
+            <% end %>
+          Price: <%= item.price  %>
+          Sub-Total: <%= (item.price * quantity) %>
+      </div>
+      Total: <%= @cart.total %>
+  <% end %>
+</div>
 
-<div class="subtotal">
-  Subtotal: $<%= @cart.subtotal %><br>
+<div class="total">
+  Total: $<%= @cart.total %><br>
 </div>
 <%- unless current_user == nil -%>
   <%= button_to "Proceed to checkout"%>

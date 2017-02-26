@@ -5,7 +5,5 @@ class Admin::BaseController < ApplicationController
     render file: '/public/404' unless current_admin?
   end
 
-  def show
-    @admin = current_user
-  end
+
 end

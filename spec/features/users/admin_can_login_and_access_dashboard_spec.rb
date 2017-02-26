@@ -18,12 +18,12 @@ describe "Admin can log in" do
       fill_in "session[email]", with: "SamMcKeen@gmail.com"
       fill_in "session[password]", with: "password"
       click_on "Login"
-      save_and_open_page
+
       expect(current_path).to eq('/admin/dashboard')
       expect(page).to have_content "Admin Dashboard"
-      expect(user.role).to eq("admin")
+      expect(admin.role).to eq("admin")
 
-       within("h1.greeting") do
+       within("h3.greeting") do
          expect(page).to have_content "Welcome Samuel"
        end
        expect(page).to have_content "Log out"
@@ -31,7 +31,7 @@ describe "Admin can log in" do
   end
 
   context "with INvalid credentials" do
-    xscenario "they click on log in button" do
+    scenario "they click on log in button" do
       user = User.create(
                         first_name: "John",
                         last_name: "Doe",
@@ -43,12 +43,12 @@ describe "Admin can log in" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
        visit 'admin/dashboard'
-       expect(user.role).to eq("user")
+       expect(user.role).to eq("default")
        expect(page).to have_content "404"
     end
   end
 
-  xcontext "with NO credentials" do
+  context "with NO credentials" do
     scenario "they type admin dashboard into url" do
 
        visit 'admin/dashboard'
