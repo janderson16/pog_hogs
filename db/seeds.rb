@@ -51,7 +51,7 @@ pog_1 = category_4.items.create(
         title: "King of Cool Pog",
         price: 0.49,
         description: "King of Cool foil pog",
-        image_path: 'http://i.imgur.com/1SzimX8.jpg',
+        image_path: 'http://i.imgur.com/PneVUkS.jpg',
         )
 pog_2 = category_4.items.create(
         title: "Original Pog Brand Poggie Relaxing",
