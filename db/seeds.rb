@@ -1,11 +1,11 @@
-category_1 = Category.create(title: "Slammers")
-category_2 = Category.create(title: "Boards")
-category_3 = Category.create(title: "Cases")
-category_4 = Category.create(title: "Pogs")
-category_5 = Category.create(title: "Sets")
+category_1 = Category.create!(title: "Slammers")
+category_2 = Category.create!(title: "Boards")
+category_3 = Category.create!(title: "Cases")
+category_4 = Category.create!(title: "Pogs")
+category_5 = Category.create!(title: "Sets")
 
 slammer_1 = category_1.items.create(
-        title: "OJ Simpson Slammer",
+        title: "OJ Slammer",
         price: 42.34,
         description: "OJ Simpson in the slammer, on a slammer!",
         image_path: 'OJ_slammer.jpg',
@@ -84,7 +84,7 @@ case_2 = category_3.items.create(
         image_path: '/app/assets/images/200-count_case.jpg',
         )
 board_1 = category_2.items.create(
-        title: "Official Pog Brand Game Board",
+        title: "Pog Game Board",
         price: 14.95,
         description: "Offical Pog Brand hard gameboard",
         image_path: '/app/assets/images/pog_brand_board.jpg',

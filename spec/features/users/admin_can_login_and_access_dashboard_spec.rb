@@ -10,7 +10,7 @@ describe "Admin can log in" do
                          password: "password",
                          role: 1
                          )
-      visit root_path
+      visit items_path
 
       click_on "Log In"
       expect(current_path).to eq('/login')
