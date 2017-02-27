@@ -98,15 +98,16 @@
                 <h3 class="home_blurb">Featured Items</h3>
 
                 <div class="row">
+                  <% @items[0..2].each do |item| %>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
-                                <h4 class="pull-right">$<%= @item_1.price %></h4>
-                                <h4><%= link_to  @item_1.title, category_item_path(@category_1, @item_1) %>
+                                <h4><%= link_to  item.title, category_item_path(item.category, item) %>
                                 </h4>
-                                <p><%= @item_1.description %></p>
+                                <p><%= item.description %></p>
+                                <h4 class="pull-right">$<%= item.price %></h4>
                             </div>
                             <!-- <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
@@ -121,50 +122,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$<%= @item_2.price %></h4>
-                                <h4><%= link_to  @item_2.title, category_item_path(@category_2, @item_2) %>
-                                </h4>
-                                <p><%= @item_2.description %></p>
-                            </div>
-                            <!-- <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div> -->
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">$<%= @item_3.price %></h4>
-                                <h4><%= link_to  @item_3.title, category_item_path(@category_3, @item_3) %>
-                                </h4>
-                                <p><%= @item_3.description %></p>
-                            </div>
-                            <!-- <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
-                            </div> -->
-                        </div>
-                    </div>
-
+                  <% end %>
                 </div>
 
             </div>
