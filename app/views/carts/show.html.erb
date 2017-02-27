@@ -14,6 +14,7 @@
             <% end %>
           Price: <%= item.price  %><br>
           Subtotal: <%= (item.price * quantity) %><br>
+          <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %>
       </div>
   <% end %>
 </div>
