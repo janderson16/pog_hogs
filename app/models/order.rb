@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   def total_price
     self.items.reduce(0) do |sum, item|
       sum += item.price
-      sum
+      sum.round(2)
     end
   end
 
@@ -43,4 +43,11 @@ class Order < ApplicationRecord
     where("status = '3'").count
   end
 
+  def update_at
+    if status == 2 || status == 3
+       "Order was #{current_status} at #{updated_at.strftime("%l:%M%P, %d %b. %Y")}"
+    else
+      nil
+    end
+  end
 end
