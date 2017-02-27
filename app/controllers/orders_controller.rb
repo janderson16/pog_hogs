@@ -34,6 +34,6 @@ before_action :current_admin?, only: [:update]
   private
 
   def order_params
-    params.require(:order).permit(:status, :user_id)
+    params.permit(:status, :user_id)
   end
 end
