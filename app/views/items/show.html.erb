@@ -1,6 +1,6 @@
 <h1><%= @item.title %></h1>
 
-<%= image_tag "@item.image_path" %>
+<%= image_tag(@item.image_path) %>
 <%= @item.description %>
 $<%= @item.price %>
 
