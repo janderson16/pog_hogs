@@ -1,22 +1,22 @@
 <h1>Your Cart</h1>
 
 <div class="cart_list">
-  <% @cart_items.each do |item, quantity| %>
-      <div class="cart_item">
-          Item: <%= item.title %><br>
-          Quantity: <%= quantity %><br>
-            <%= form_tag('/cart', id: item.id, method: :put) do %>
-                <div>
-                  <%= hidden_field_tag :id, "#{item.id}" %>
-                  <%= text_field_tag :update %>
-                  <%=  submit_tag 'Update Quantity' %><br>
-                </div>
-            <% end %>
-          Price: <%= item.price  %><br>
-          Subtotal: <%= (item.price * quantity) %><br>
-          <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %>
-      </div>
-  <% end %>
+      <% @cart_items.each do |item, quantity| %>
+          <div class="cart_item">
+              Item: <%= item.title %><br>
+              Quantity: <%= quantity %><br>
+                <%= form_tag('/cart', id: item.id, method: :put) do %>
+                    <div>
+                      <%= hidden_field_tag :id, "#{item.id}" %>
+                      <%= text_field_tag :update %>
+                      <%=  submit_tag 'Update Quantity' %><br>
+                    </div>
+                <% end %>
+              Price: <%= item.price  %><br>
+              Subtotal: <%= (item.price * quantity) %><br>
+              <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %>
+          </div>
+      <% end %>
 </div>
 
 <div class="total">

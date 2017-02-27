@@ -19,9 +19,12 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    # byebug
+    byebug
+    item = Item.find(params[:id])
+    byebug
     @cart.contents[params[:id]] = nil
     flash[:notice] = "You now have #{pluralize(@cart.contents[item.id.to_s], item.title)}."
+    redirect_to cart_path
   end
 
 end
