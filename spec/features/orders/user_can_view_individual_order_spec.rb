@@ -11,7 +11,7 @@ RSpec.feature "User can see individual order" do
                        password: "password"
                        )
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    order = Order.create(user_id: user.id)
+    order = Order.create(user_id: user.id, status: 0)
     order_item = OrderItem.create(quantity: 2, item_id: item.id, order_id: order.id)
 
     visit '/dashboard'

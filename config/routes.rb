@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard', to: "dashboard#dashboard"
+    resources :orders, only: [:show, :update]
   end
 
   resources :users, only: [:new, :create, :edit, :update]
@@ -27,5 +28,5 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   put '/cart', to: 'carts#update'
 
-  resources :orders, only: [:index, :show, :create, :update]
+  resources :orders, only: [:index, :show, :create]
 end
