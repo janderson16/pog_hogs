@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome to PogHogs #{@user.first_name}"
+      flash[:success] = "Welcome to PogHogs #{@user.first_name}"
       session[:user_id] = @user.id
       redirect_to '/dashboard'
     elsif User.exists?(['email LIKE ?', "%#{@user.email}%"])
-      flash[:notice] = "Email already registered with an account!"
+      flash[:error] = "Email already registered with an account!"
       redirect_to new_user_path
     else
       flash[:notice] = "Please check that all fields were filled in correctly."
