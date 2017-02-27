@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+before_action :current_admin?, only: [:update]
 
   def index
     @orders = current_user.orders
@@ -20,4 +21,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      flash[:success] = "Order successfully updated."
+      redirect_back(fallback_location: 'admin/dashboard')
+    else
+      redirect_back(fallback_location: 'admin/dashboard')
+    end
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:status, :user_id)
+  end
 end

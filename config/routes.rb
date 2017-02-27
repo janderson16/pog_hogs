@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
   get '/dashboard', to: "users#show"
-  
+
   #resources :categories, path: ''
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   put '/cart', to: 'carts#update'
 
   resources :items, only: [:index]
-  resources :orders, only: [:index, :show, :create]
+  resources :orders, only: [:index, :show, :create, :update]
 end
