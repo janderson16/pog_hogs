@@ -15,4 +15,32 @@ class Order < ApplicationRecord
     self.items.count
   end
 
+  def current_status
+    if status == 0
+      "Ordered"
+    elsif status == 1
+      "Paid"
+    elsif status == 2
+      "Completed"
+    else status == 3
+      "Cancelled"
+    end
+  end
+
+  def self.status_ordered
+    where("status = '0'").count
+  end
+
+  def self.status_paid
+    where("status = '1'").count
+  end
+
+  def self.status_completed
+    where("status = '2'").count
+  end
+
+  def self.status_cancelled
+    where("status = '3'").count
+  end
+
 end
