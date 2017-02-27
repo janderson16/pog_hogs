@@ -12,9 +12,9 @@ class SessionsController < ApplicationController
       else
         redirect_to '/dashboard'
       end
-      flash[:notice] = "Logged in as #{user.first_name} #{user.last_name}"
+      flash[:success] = "Logged in as #{user.first_name} #{user.last_name}"
     else
-      flash[:notice] = "Incorrect email and/or password"
+      flash[:error] = "Incorrect email and/or password"
       redirect_to login_path
     end
   end
