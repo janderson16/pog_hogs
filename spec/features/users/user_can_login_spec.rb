@@ -10,7 +10,7 @@ require 'rails_helper'
                            password: "password"
                            )
 
-      visit root_path
+      visit items_path
 
       click_on "Log In"
       expect(current_path).to eq('/login')
@@ -40,7 +40,7 @@ require 'rails_helper'
                            password: "password"
                            )
 
-      visit root_path
+      visit items_path
       click_on "Log In"
       expect(current_path).to eq('/login')
 

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'items#index'
+  root to: 'home#home'
+  get '/home', to: 'home#home'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update]
   get '/dashboard', to: "users#show"
-  
+
   #resources :categories, path: ''
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
