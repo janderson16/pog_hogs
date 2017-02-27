@@ -1,19 +1,33 @@
-<h1>Admin Dashboard</h1>
+<h1 class="center">Admin Dashboard</h1>
 
 <h3 class="greeting">Welcome <%= current_user.first_name %></h3>
-<%= link_to "Edit My Profile", edit_user_path(current_user) %><br>
-
-<h4>Orders</h4>
-<% @orders.each do |order| %>
-<%= link_to "Invoice Number: #{order.id}", admin_order_path(order)%> <br>
-Current Status: <%= order.status.upcase %><br><br>
-  <%= button_to "Mark as Completed",order_path(order), method: :put, status: order.status = 2 if order.status == 1 %>
-  <%= button_to "Cancel", order_path(order), method: :put, status: order.status = 3 if order.status == 0 || order.status == 1 %>
-  <%= button_to "Mark as Paid", order_path(order), method: :put, status: order.status = 1 if order.status == 0 %>
-<% end %>
+<%= link_to "Edit My Profile", edit_user_path(current_user) %><br><br>
 
 <h3>Current Count of Orders by Status</h3>
 <p>Ordered: <%= @orders.ordered.count %> </p>
 <p>Paid: <%= @orders.paid.count %></p>
 <p>Completed: <%= @orders.completed.count %></p>
-<p>Cancelled: <%= @orders.cancelled.count %></p>
+<p>Cancelled: <%= @orders.cancelled.count %></p><br>
+
+<h4 class="center">Orders</h4>
+<div class="order_list">
+  <table style="width:100%">
+    <tr>
+      <th>Order Number</th>
+      <th>Current Status</th>
+      <th>Date Placed</th>
+      <th>Updated at</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <% @orders.each do |order| %>
+      <td><%= link_to "Order Number: #{order.id}", admin_order_path(order)%></td>
+      <td><%= order.status.upcase %></td>
+      <td><%= order.created_at.strftime("%d %b. %Y") %></td>
+      <td><%= order.updated_at.strftime("%l:%M%P, %d %b. %Y") %></td>
+      <td><%= order.total_price %></td>
+  <%#= button_to "Mark as Completed",order_path(order), method: :put, status: order.status = 2 if order.status == 1 %>
+  <%#= button_to "Cancel", order_path(order), method: :put, status: order.status = 3 if order.status == 0 || order.status == 1 %>
+  <%#= button_to "Mark as Paid", order_path(order), method: :put, status: order.status = 1 if order.status == 0 %>
+    </tr>
+      <% end %>
