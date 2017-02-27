@@ -29,8 +29,8 @@ class Order < ApplicationRecord
   # end
 
   def update_at
-    if status == 2 || status == 3
-       "Order was #{current_status} at #{updated_at.strftime("%l:%M%P, %d %b. %Y")}"
+    if status == "completed" || status == "cancelled"
+       "Order was #{status} at #{updated_at.strftime("%l:%M%P, %d %b. %Y")}"
     else
       nil
     end
