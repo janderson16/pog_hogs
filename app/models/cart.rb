@@ -20,13 +20,13 @@ class Cart
   end
 
   def update_cart_items(quantity)
-    contents[item_id.to_s] = quantity
+    contents[item_id.to_s] = quantity.abs
   end
 
   def items
     @contents.map do |id, quantity|
       item = Item.find(id)
-      CartItem.new(item, quantity)
+      CartItem.new(item, quantity.abs)
     end
   end
 
