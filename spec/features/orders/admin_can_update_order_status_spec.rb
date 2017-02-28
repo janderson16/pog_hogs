@@ -20,27 +20,15 @@ describe "Admin can see all orders" do
                         email: "johndoe@gmail.com",
                         password: "password"
                         )
-     user_2 = User.create(
-                        first_name: "Rick",
-                        last_name: "Reynolds",
-                        email: "RR@gmail.com",
-                        password: "password",
-                        )
      order_1 = Order.create(user_id: user_1.id)
      order_item = OrderItem.create(quantity: 2, item_id: item_1.id, order_id: order_1.id)
-     order_2 = Order.create(user_id: user_2.id)
-     order_item = OrderItem.create(quantity: 3, item_id: item_2.id, order_id: order_2.id)
 
       visit 'admin/dashboard'
-      expect(page).to have_content "Ordered: 2"
+      expect(page).to have_content "Ordered: 1"
       expect(page).to have_content "Paid: 0"
-      expect(page).to have_content "Order Number: #{order_1.id}"
-      expect(page).to have_content "#{order_1.updated_at.strftime("%l:%M%P, %d %b. %Y")}"
-
-
+      click_on "Mark as Paid"
+      expect(page).to have_content "Ordered: 0"
+      expect(page).to have_content "Paid: 1"
     end
   end
 end
-
-
-# And I can filter orders to display by each status type ("Ordered", "Paid", "Cancelled", "Completed")

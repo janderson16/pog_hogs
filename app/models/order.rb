@@ -23,4 +23,5 @@ class Order < ApplicationRecord
       nil
     end
   end
+
 end

@@ -1,10 +1,11 @@
 <h1>Order Number: <%= @order.id %></h1>
 <h4>Status: <%= @order.status.upcase %> </h4>
-<h6>Order Submitted: <%= @order.created_at.strftime("%d %b. %Y") %></h6>
+<h6>Order Submitted: <%= @order.created_at.strftime("%l:%M%P, %d %b. %Y") %></h6>
 
 Customer Number: <%= @order.user_id %><br>
 Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %><br>
 Customer Email: <%= @order.user.email %>
+Customer Address: <%= %>
 
 <div class="order_list">
   <table style="width:100%">
