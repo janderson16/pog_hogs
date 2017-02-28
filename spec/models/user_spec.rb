@@ -18,4 +18,11 @@ describe User do
     expect(user.role).to eq("default")
     expect(user.default?).to be_truthy
   end
+
+  it "user cannot be created with insufficient data" do
+    user = User.create(email: "sam",
+                       role: 0)
+
+    expect(user).to_not be_valid
+  end
 end

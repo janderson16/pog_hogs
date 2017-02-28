@@ -10,13 +10,13 @@
 
   <body>
 
-    <!-- Navbar -->
-
-    <header class="navbar navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <%= link_to "PogHogs", '/', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Admin Dashboard", '/admin/dashboard' if current_admin?%></li>
             <li><%= link_to "Shop", items_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
@@ -28,17 +28,22 @@
             </li>
             <%- unless current_user == nil -%>
               <li><%= link_to "Log out", logout_path, method: :delete %> </li>
+              <li><%= link_to "My Profile", '/dashboard' %></li>
             <%- else -%>
               <li><%= link_to "Log In", login_path, method: :get %> </li>
             <%- end -%>
-              <li><%= link_to "My Cart", '/cart' %></li>
+              <li><%= link_to "My Cart: #{@cart.total_count}", '/cart' %></li>
           </ul>
         </nav>
       </div>
-    </header>
+        <!-- /.container -->
+    </nav>
 
     <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: type %>
+      <div class="alert <%= bootstrap_class_for(type) %> fade in">
+        <button class="close" data-dismiss="alert">×</button>
+        <%= message %>
+      </div>
     <% end %>
 
     <div class="container">

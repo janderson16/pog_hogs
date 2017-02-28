@@ -3,7 +3,7 @@
 <% @orders.each do |order| %>
   <ul>
     <li>Order Number: <%= order.id %></li>
-    <li><%= order.created_at %></li>
+    <li>Placed on: <%= order.created_at.strftime("%d %b. %Y") %></li>
     <li><%= pluralize(order.count, 'item') %></li>
     <li><%= link_to "Order Details", order_path(order) %></li>
   </ul>

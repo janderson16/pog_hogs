@@ -1,0 +1,36 @@
+<h1>Order Number: <%= @order.id %></h1>
+<h4>Status: <%= @order.status.upcase %> </h4>
+<h6>Order Submitted: <%= @order.created_at.strftime("%l:%M%P, %d %b. %Y") %></h6>
+
+Customer Number: <%= @order.user_id %><br>
+Customer Name: <%= @order.user.first_name %> <%= @order.user.last_name %><br>
+Customer Email: <%= @order.user.email %><br>
+Customer Address: <%= @order.user.address%>
+
+<div class="order_list">
+  <table style="width:100%">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+
+      <% @order.order_items.each do |order_item| %>
+    <div class="order_item">
+      <tr>
+        <td><%= link_to order_item.item.title, category_item_path(order_item.item.category, order_item.item) %><br></td>
+        <td><%= order_item.item.price %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.quantity * order_item.item.price %></td><br>
+      <% end %>
+      </tr>
+    </div>
+  </table>
+</div>
+  <br>
+
+
+  <div class="total right">Order Total: $<%= @order.total_price %><br></div><br>
+
+  <div class="total right"><%= @order.update_at %></div>
