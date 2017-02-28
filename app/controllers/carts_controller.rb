@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart_items = @cart.cart_items
+    @cart_items = @cart.items
   end
 
   def update
@@ -19,11 +19,11 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    byebug
     item = Item.find(params[:id])
-    byebug
-    @cart.contents[params[:id]] = nil
-    flash[:notice] = "You now have #{pluralize(@cart.contents[item.id.to_s], item.title)}."
+    quantity = params[:id]
+    cart_item = CartItem.new(item, quantity)
+    @cart.contents.delete(params[:id])
+    flash[:notice] = "You've successfully removed the #{view_context.link_to(cart_item.title, category_item_path(item.category, item))} from your cart."
     redirect_to cart_path
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-  describe "a visitor can adjusts the quantity in a cart", type: :feature do
+  describe "a visitor can adjust the quantity in a cart", type: :feature do
     before(:each) do
       @slammers = Category.create!(title: "Slammers")
       @item_1 = @slammers.items.create!(title: "Lion Holographic Slammer",
