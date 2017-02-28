@@ -1,0 +1,27 @@
+<h1>All Items</h1>
+
+<% @categories.each do |category| %>
+  <div class="row">
+    <h3 class="category"> <%= category.title %></h3>
+        <% category.items.each do |item| %>
+
+        <div class="<%= item.title %>" style="text-align: center;">
+          <div class="column">
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <%= image_tag(item.image_path) %>
+                    <div class="caption">
+                        <h4><%= link_to  item.title, category_item_path(category, item) %>
+                        </h4>
+                        <p><%= item.description %></p>
+                        <h4 class="status"><%= item.status %></h4>
+                        <h4><%= link_to "Edit", edit_admin_item_path(item) %>
+                        <h4 class="pull-right">$<%= item.price %></h4>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+<% end %>
