@@ -18,7 +18,7 @@ RSpec.feature "User can see individual order" do
     click_on "My Orders"
     expect(page).to have_content("Order History")
     click_on "Order Details"
-    expect(page).to have_content("Status: Ordered")
+    expect(page).to have_content("Status: ORDERED")
     expect(page).to have_content("Order Total: $24.99")
   end
 

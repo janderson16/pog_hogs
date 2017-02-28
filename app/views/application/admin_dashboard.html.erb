@@ -1,19 +1,46 @@
-<h1>Admin Dashboard</h1>
+<h1 class="center">Admin Dashboard</h1>
 
 <h3 class="greeting">Welcome <%= current_user.first_name %></h3>
-<%= link_to "Edit My Profile", edit_user_path(current_user) %><br>
-
-<h4>Orders</h4>
-<% @orders.each do |order| %>
-<%= link_to "Invoice Number: #{order.id}", admin_order_path(order)%> <br>
-Current Status: <%= order.status.upcase %><br><br>
-  <%= button_to "Mark as Completed",order_path(order), method: :put, status: order.status = 2 if order.status == 1 %>
-  <%= button_to "Cancel", order_path(order), method: :put, status: order.status = 3 if order.status == 0 || order.status == 1 %>
-  <%= button_to "Mark as Paid", order_path(order), method: :put, status: order.status = 1 if order.status == 0 %>
-<% end %>
+<%= link_to "Edit My Profile", edit_user_path(current_user) %><br><br>
 
 <h3>Current Count of Orders by Status</h3>
-<p>Ordered: <%= @orders.ordered.count %> </p>
-<p>Paid: <%= @orders.paid.count %></p>
-<p>Completed: <%= @orders.completed.count %></p>
-<p>Cancelled: <%= @orders.cancelled.count %></p>
+<p>Ordered: <%= @all_orders.ordered.count %> </p>
+<p>Paid: <%= @all_orders.paid.count %></p>
+<p>Completed: <%= @all_orders.completed.count %></p>
+<p>Cancelled: <%= @all_orders.cancelled.count %></p><br>
+
+<h4 class="center">Orders</h4><br>
+<div class="center">
+  <%= link_to "All Orders |", admin_dashboard_path(:current_status => nil) %>
+  <%= link_to "Ordered |", admin_dashboard_path(:current_status => "ordered") %>
+  <%= link_to "Paid |", admin_dashboard_path(:current_status => "paid") %>
+  <%= link_to "Completed |", admin_dashboard_path(:current_status => "completed") %>
+  <%= link_to "Cancelled", admin_dashboard_path(:current_status => "cancelled") %>
+</div><br>
+
+<div class="order_list">
+  <table style="width:100%">
+    <tr>
+      <th>Order Number</th>
+      <th>Current Status</th>
+      <th>Date Placed</th>
+      <th>Updated at</th>
+      <th>Total</th>
+      <th></th>
+      <th>Change Status</th>
+    </tr>
+    <tr>
+      <% @orders.order(:id).each do |order| %>
+      <td><%= link_to "Order Number: #{order.id}", admin_order_path(order)%></td>
+      <td><%= order.status.upcase %></td>
+      <td><%= order.created_at.strftime("%d %b. %Y") %></td>
+      <td><%= order.updated_at.strftime("%l:%M%P, %d %b. %Y") %></td>
+      <td><%= order.total_price %></td>
+      <td><%= button_to "Mark as Completed", admin_order_path(order, :status => "completed"), method: :put %></td>
+              <!-- add to end of line above if client doesn't want button showing for all statuses=> if order.status == "paid" -->
+      <td><%= button_to "Cancel", admin_order_path(order, :status => "cancelled"), method: :put %></td>
+              <!-- add to end of line above if client doesn't want button showing for all statuses=> if order.status == "ordered" || order.status == "paid" -->
+      <td><%= button_to "Mark as Paid", admin_order_path(order, :status => "paid"), method: :put %></td>
+              <!-- add to end of line above if client doesn't want button showing for all statuses=> if order.status == "ordered"-->
+    </tr>
+      <% end %>
