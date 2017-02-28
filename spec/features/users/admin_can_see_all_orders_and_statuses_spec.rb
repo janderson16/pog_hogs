@@ -37,10 +37,6 @@ describe "Admin can see all orders" do
       expect(page).to have_content "Order Number: #{order_1.id}"
       expect(page).to have_content "#{order_1.updated_at.strftime("%l:%M%P, %d %b. %Y")}"
 
-
     end
   end
 end
-
-
-# And I can filter orders to display by each status type ("Ordered", "Paid", "Cancelled", "Completed")
