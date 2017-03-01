@@ -1,4 +1,8 @@
 class Admin::ItemsController < Admin::BaseController
+  
+  def index
+    @items = Item.all
+  end
 
   def new
     @categories = Category.all
@@ -45,4 +49,5 @@ class Admin::ItemsController < Admin::BaseController
   def item_params
     params.require(:item).permit(:title, :price, :description, :image_path, :status, :category_id)
   end
+  
 end
