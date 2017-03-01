@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   #resources :categories, path: ''
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
-  resources :categories do
+  resources :categories, only: [:show] do
     resources :items, except: [:index]
   end
 

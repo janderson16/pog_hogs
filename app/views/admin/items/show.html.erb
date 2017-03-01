@@ -1,14 +1,10 @@
-<h1>Admin View</h1>
-<h2><%= @item.title %></h2>
+<h1 class="center">Admin View</h1><br>
+<h3 class="center"><%= @item.title %></h3>
 
 <div class="img"><%= image_tag(@item.image_path) %></div>
-<%= @item.description %>
-$<%= @item.price %>
+Description: <%= @item.description %><br>
+Price: $<%= @item.price %><br>
 
-<%- unless @item.status == 1 -%>
-  <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn btn-danger" %>
-<% else %>
-  <h4 class="retired">Item Retired</h4>
-<% end %>
-
+Current status: <%= @item.status.upcase %><br>
+<%= link_to "Edit Product", admin_item_path(@item) %><br>
 <%= link_to "Admin Dashboard", admin_dashboard_path %><br>
