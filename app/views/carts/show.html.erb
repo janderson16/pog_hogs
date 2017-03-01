@@ -24,11 +24,11 @@
           <td><%= item.quantity %></td>
           <td><%= item.subtotal.round(2) %></td>
             <%= form_tag('/cart', id: item.id, method: :put) do %>
-                <div>
-                      <%= hidden_field_tag :id, "#{item.id}" %>
-                  <td><%= text_field_tag :update %>
+
+                  <td><%= hidden_field_tag :id, "#{item.id}" %>
+                      <%= text_field_tag :update %>
                       <%=  submit_tag 'Update Quantity' %></td>
-                </div>
+
             <% end %>
           <td> <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %></td>
           <% end %>
