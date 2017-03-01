@@ -1,3 +1,5 @@
+User.create(first_name: "Doc", last_name: "Funk", email: "doc@funk.com", password: "123", role: 1)
+
 category_1 = Category.create!(title: "Slammers")
 category_2 = Category.create!(title: "Boards")
 category_3 = Category.create!(title: "Cases")
