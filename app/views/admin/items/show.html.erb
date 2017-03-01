@@ -1,7 +1,7 @@
 <h1 class="center">Admin View</h1><br>
 <h3 class="center"><%= @item.title %></h3>
 
-<div class="img"><%= image_tag(@item.image_path) %></div>
+<div class="img"><%= link_to image_tag(@item.image_path), category_item_path(@item.category, @item) %></div>
 Description: <%= @item.description %><br>
 Price: $<%= @item.price %><br>
 
