@@ -1,0 +1,10 @@
+<h1 class="center">Admin View</h1><br>
+<h3 class="center"><%= @item.title %></h3>
+
+<div class="img"><%= image_tag(@item.image_path) %></div>
+Description: <%= @item.description %><br>
+Price: $<%= @item.price %><br>
+
+Current status: <%= @item.status.upcase %><br>
+<%= link_to "Edit Product", edit_admin_item_path(@item) %><br>
+<%= link_to "Admin Dashboard", admin_dashboard_path %><br>
