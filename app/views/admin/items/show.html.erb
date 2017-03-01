@@ -6,5 +6,5 @@ Description: <%= @item.description %><br>
 Price: $<%= @item.price %><br>
 
 Current status: <%= @item.status.upcase %><br>
-<%= link_to "Edit Product", admin_item_path(@item) %><br>
+<%= link_to "Edit Product", edit_admin_item_path(@item) %><br>
 <%= link_to "Admin Dashboard", admin_dashboard_path %><br>
