@@ -11,15 +11,18 @@
       <th>Update Quantity</th>
     </tr>
 
-  <% @cart_items.each do |item, quantity| %>
+  <% if @cart_items.empty? %>
+        <%= link_to "Your Cart is Empty - Click to Keep Shopping", items_path %>
+  <% else %>
+  <% @cart_items.each do |item| %>
       <div class="cart_item">
         <tr>
           <td><%= item.title %>
               <div class="img"><%= link_to image_tag(item.image_path), category_item_path(item.category, item) %></td></div><br>
           <td><%= item.description %></td>
           <td><%= item.price  %></td>
-          <td><%= quantity %></td>
-          <td><%= (item.price * quantity) %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.subtotal %></td>
             <%= form_tag('/cart', id: item.id, method: :put) do %>
                 <div>
                       <%= hidden_field_tag :id, "#{item.id}" %>
@@ -27,6 +30,8 @@
                       <%=  submit_tag 'Update Quantity' %></td>
                 </div>
             <% end %>
+          <td> <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %></td>
+          <% end %>
         </tr>
       </div>
   <% end %>
