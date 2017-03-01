@@ -29,7 +29,7 @@ nav {
 
 .right {text-align: right; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto;}
 
-img {
+/*img {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 5px;
@@ -38,7 +38,7 @@ img {
 
 img:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
+}*/
 
 #shopnow > a{
   /*-webkit-text-stroke: .5px black;*/

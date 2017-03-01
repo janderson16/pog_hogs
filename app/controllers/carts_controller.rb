@@ -23,7 +23,9 @@ class CartsController < ApplicationController
     quantity = params[:id]
     cart_item = CartItem.new(item, quantity)
     @cart.contents.delete(params[:id])
-    flash[:notice] = "You've successfully removed the #{view_context.link_to(cart_item.title, category_item_path(item.category, item))} from your cart."
+    # flash[:notice] = "You've successfully removed the #{view_context.link_to(cart_item.title, category_item_path(item.category, item))} from your cart."
+    flash[:notice] = %Q[You've successfully removed <a href="/categories/#{item.category}/items/#{item.id} ">#{item.id}</a>]
+    flash[:notice] = "You've successfully removed <a href='#{category_item_path(item.category, item)}'>#{cart_item.title}</a> from your cart."
     redirect_to cart_path
   end
 
