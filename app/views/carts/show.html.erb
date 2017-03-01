@@ -22,7 +22,7 @@
           <td><%= item.description %></td>
           <td><%= item.price  %></td>
           <td><%= item.quantity %></td>
-          <td><%= item.subtotal.round(2) %></td>
+          <td><%= item.subtotal %></td>
             <%= form_tag('/cart', id: item.id, method: :put) do %>
 
                   <td><%= hidden_field_tag :id, "#{item.id}" %>
