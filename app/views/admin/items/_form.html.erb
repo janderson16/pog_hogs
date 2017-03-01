@@ -17,7 +17,6 @@
 
 <%= f.label :status %>
 <%= f.collection_radio_buttons(:status, @statuses, :first, :first, checked: @item.status) %><br>
-<%#= f.collection_radio_buttons(:id, @statuses, :id, :status, checked: @item.status) %><br>
 
 <%= f.submit %>
 
