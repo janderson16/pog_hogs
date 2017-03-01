@@ -22,14 +22,11 @@ describe "a visitor can remove an item from the cart", type: :feature do
 
         visit cart_path
 
-        within(".cart_item:nth-child(1)") do
-          expect(page).to have_content(1)
-        end
+
+        expect(page).to have_content(1)
 
       # And I click link "remove"
-        within(".cart_item:nth-child(1)") do
-          click_on("Remove")
-        end
+        click_on("Remove")
 
       # Then my current page should be "/cart"
         expect(current_path).to eq(cart_path)
