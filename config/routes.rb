@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   #^^^ this removes categories so url is just '/slammers' but causes a nil error
 
   resources :categories, only: [:show] do
-    resources :items, except: [:index]
+    resources :items, only: [:show]
   end
 
   get '/carts', to: 'carts#index'

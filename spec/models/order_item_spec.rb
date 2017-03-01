@@ -7,7 +7,7 @@ describe OrderItem do
                        role: 0)
     order = Order.create(status: 0, user_id: user.id)
     category = Category.create(title: "Pogs")
-    item = category.items.create(title: "Official WPF Commemorative Pog", status: 0, price: 1.29)
+    item = category.items.create(title: "Official WPF Commemorative Pog", status: 0, price: 1.29, description: "stuff")
     order_item = OrderItem.create(quantity: 1, item_id: item.id, order_id: order.id)
 
     expect(order_item).to be_valid

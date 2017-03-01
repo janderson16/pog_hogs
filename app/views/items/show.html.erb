@@ -4,7 +4,7 @@
 <%= @item.description %>
 $<%= @item.price %>
 
-<%- unless @item.status == 1 -%>
+<%- if @item.active? -%>
   <%= button_to "Add to Cart", carts_path(item_id: @item.id), class: "btn btn-danger" %>
 <% else %>
   <h4 class="retired">Item Retired</h4>

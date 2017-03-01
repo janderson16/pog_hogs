@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Item do
   it "item can be created" do
     category = Category.create(title: "Pogs")
-    item = category.items.create(title: "Official WPF Commemorative Pog", status: 0, price: 1.29)
+    item = category.items.create(title: "Official WPF Commemorative Pog", status: 0, price: 1.29, description: "stuff")
 
     expect(item).to be_valid
   end
