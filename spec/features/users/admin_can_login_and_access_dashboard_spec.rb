@@ -22,11 +22,8 @@ describe "Admin can log in" do
       expect(current_path).to eq('/admin/dashboard')
       expect(page).to have_content "Admin Dashboard"
       expect(admin.role).to eq("admin")
-
-       within("h3.greeting") do
-         expect(page).to have_content "Welcome Samuel"
-       end
-       expect(page).to have_content "Log out"
+      expect(page).to have_content "Logged in as Samuel McKeen"
+      expect(page).to have_content "Log out"
     end
   end
 

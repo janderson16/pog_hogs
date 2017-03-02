@@ -32,8 +32,8 @@ describe "Admin can see all orders" do
      order_item = OrderItem.create(quantity: 3, item_id: item_2.id, order_id: order_2.id)
 
       visit 'admin/dashboard'
-      expect(page).to have_content "Ordered: 2"
-      expect(page).to have_content "Paid: 0"
+      expect(page).to have_content "2 Ordered"
+      expect(page).to have_content "0 Paid"
       expect(page).to have_content "Order Number: #{order_1.id}"
       expect(page).to have_content "#{order_1.updated_at.strftime("%l:%M%P, %d %b. %Y")}"
 
