@@ -23,13 +23,14 @@
           <td><%= item.price  %></td>
           <td><%= item.quantity %></td>
           <td><%= item.subtotal %></td>
-            <%= form_tag('/cart', id: item.id, method: :put) do %>
-                <div>
-                      <%= hidden_field_tag :id, "#{item.id}" %>
-                  <td><%= text_field_tag :update %>
-                      <%=  submit_tag 'Update Quantity' %></td>
-                </div>
-            <% end %>
+              <div>
+                <td>  <%= form_tag('/cart', id: item.id, method: :put) do %>
+                        <%= hidden_field_tag :id, "#{item.id}" %>
+                        <%= text_field_tag :update %>
+                        <%=  submit_tag 'Update Quantity' %>
+                      <% end %>
+                </td>
+              </div>
           <td> <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %></td>
           <% end %>
         </tr>
