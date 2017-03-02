@@ -31,7 +31,7 @@
             <%- else -%>
               <li><%= link_to "Log In", login_path, method: :get %> </li>
             <%- end -%>
-              <li><%= link_to "My Cart: #{@cart.total_count}", '/cart' %></li>
+              <li><%= link_to "My Cart: #{@cart.total_count.abs}", '/cart' %></li>
           </ul>
         </nav>
       </div>
@@ -41,7 +41,7 @@
     <% flash.each do |type, message| %>
       <div class="alert <%= bootstrap_class_for(type) %> fade in">
         <button class="close" data-dismiss="alert">×</button>
-        <%= message %>
+        <%= sanitize(message) %>
       </div>
     <% end %>
 
