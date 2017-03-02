@@ -130,10 +130,9 @@
                                               <td><%= order.created_at.strftime("%d %b. %Y") %></td>
                                               <td><%= order.updated_at.strftime("%l:%M%P, %d %b. %Y") %></td>
                                               <td>$<%= order.total_price %></td>
-                                              <td><%= button_to "Cancel", admin_order_path(order, :status => "cancelled"), method: :put, :disabled => order.completed? || order.cancelled? %>
-                                                  <%= button_to "Mark as Paid", admin_order_path(order, :status => "paid"), method: :put, :disabled => order.paid? || order.completed? || order.cancelled? %>
-                                                  <%= button_to "Mark as Completed", admin_order_path(order, :status => "completed"), method: :put, :disabled => order.completed? || order.cancelled? || order.ordered? %></td>
-
+                                              <td><%= button_to "Cancel", admin_order_path(order, :status => "cancelled"), method: :put, class: "btn btn-warning", :disabled => order.completed? || order.cancelled? %>
+                                                  <%= button_to "Mark as Paid", admin_order_path(order, :status => "paid"), method: :put, class: "btn btn-info", :disabled => order.paid? || order.completed? || order.cancelled? %>
+                                                  <%= button_to "Mark as Completed", admin_order_path(order, :status => "completed"), method: :put, class: "btn btn-success", :disabled => order.completed? || order.cancelled? || order.ordered? %></td>
                                               <% end %>
                                             </tr>
                                         </tbody>
