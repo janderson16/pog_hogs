@@ -1,50 +1,100 @@
+<body data-gr-c-s-loaded="true">
+
 <h1 class="center">Your Cart</h1>
 
-<div class="cart_list">
-  <table style="width:100%">
-    <tr>
-      <th>Item</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
-      <th>Update Quantity</th>
-    </tr>
 
-  <% if @cart_items.empty? %>
-        <%= link_to "Your Cart is Empty - Click to Keep Shopping", items_path %>
-  <% else %>
-  <% @cart_items.each do |item| %>
-      <div class="cart_item">
-        <tr>
-          <td><%= item.title %>
-              <div class="img-thumbnail"><%= link_to image_tag(item.image_path), category_item_path(item.category, item) %></td></div><br>
-          <td><%= item.description %></td>
-          <td><%= item.price  %></td>
-          <td><%= item.quantity %></td>
-          <td><%= item.subtotal %></td>
-              <div>
-                <td>  <%= form_tag('/cart', id: item.id, method: :put) do %>
-                        <%= hidden_field_tag :id, "#{item.id}" %>
-                        <%= text_field_tag :update %>
-                        <%=  submit_tag 'Update Quantity' %>
-                      <% end %>
-                </td>
-              </div>
-          <td> <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id} %></td>
-          <% end %>
-        </tr>
+<div class="row">
+    <div class="col-lg-12">
+      <div class="panel-body">
+          <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped">
+                  <thead>
+                      <tr>
+                          <th>Item Photo</th>
+                          <th>Item</th>
+                          <th>Description</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Subtotal</th>
+                          <th>Update Quantity</th>
+                          <th>Delete Item</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <% if @cart_items.empty? %>
+                              <%= link_to "Your Cart is Empty - Click to Keep Shopping", items_path %>
+                        <% else %>
+                        <% @cart_items.each do |item| %>
+                            <div class="cart_item">
+                              <tr>
+                                <td><div class="img"><%= link_to image_tag(item.image_path), category_item_path(item.category, item) %></td></div>
+                                <td><%= item.title %></td>
+                                <td><%= item.description %></td>
+                                <td><%= item.price  %></td>
+                                <td><%= item.quantity %></td>
+                                <td><%= item.subtotal %></td>
+                                <div>
+                                  <td>  <%= form_tag('/cart', id: item.id, method: :put) do %>
+                                          <%= hidden_field_tag :id, "#{item.id}" %>
+                                          <%= text_field_tag :update %>
+                                          <%=  submit_tag 'Update Quantity', class: "btn btn-info" %>
+                                        <% end %>
+                                  </td>
+                                </div>
+                                <td> <%= button_to "Remove", '/cart', method: :delete, params: {id: item.id}, class: "btn btn-danger" %></td>
+                                <% end %>
+                              </tr>
+                            </div>
+                        <% end %>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
       </div>
-  <% end %>
-  </table>
+  </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title right"><i class="fa fa-money fa-fw"></i> Total: $<%= @cart.total %></h3>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="total right">
-  <h4>Total: $<%= @cart.total %><br></h4>
 <%- unless current_user == nil -%>
-  <%= button_to "Proceed to checkout", orders_path, method: :post %>
+  <%= button_to "Proceed to checkout", orders_path, method: :post, class: "btn btn-success" %>
 <%- else -%>
-  <%= button_to "Log In to Checkout", login_path, method: :get  %>
+  <%= button_to "Log In to Checkout", login_path, method: :get, class: "btn btn-danger"  %>
   <small><%= link_to "Create Account", new_user_path %></small>
   <%- end -%>
+  <%= button_to "Shop Some More!", items_path, method: :get, class: "btn btn-warning"  %>
 </div>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="js/plugins/morris/raphael.min.js"></script>
+<script src="js/plugins/morris/morris.min.js"></script>
+<script src="js/plugins/morris/morris-data.js"></script>
+
+
+<!-- Footer -->
+<footer>
+  <div class="row">
+    <div class="col-lg-12">
+      <p>Copyright &copy; PogHogs 2017</p>
+    </div>
+  </div>
+</footer>
+
+</body>
