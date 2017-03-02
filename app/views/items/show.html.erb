@@ -28,7 +28,9 @@
                     <%= button_to "Browse #{@item.category.title}", category_path(@item.category), method: :get, class: "btn btn-primary"%>
                     <%= button_to "Browse All Items", '/items', method: :get, class: "btn btn-primary"%>
 
-
+                    <h3>Reviews (<%= @item.reviews.size %>)</h3>
+                    <%= render partial: 'items/review', collection: @item.reviews.reverse %>
+                    <%= render partial: 'reviews/form' %>
                     <!-- RATINGS AND REVIEWS BELOW -->
                     <!-- <div class="ratings">
                         <p class="pull-right">3 reviews</p>

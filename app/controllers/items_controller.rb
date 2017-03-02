@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @review = Review.new
+    @review.item_id = @item.id
   end
-  
+
 end
