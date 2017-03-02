@@ -1,48 +1,178 @@
-<h1 class="center">Admin Dashboard</h1>
 
-<h3 class="greeting">Welcome <%= current_user.first_name %></h3>
-<%= link_to "Edit My Profile", edit_user_path(current_user) %><br><br>
+      <body data-gr-c-s-loaded="true">
 
-<%= link_to "View Items Inventory", admin_items_path %>
+    <div id="wrapper">
 
-<h3>Current Count of Orders by Status</h3>
-<p>Ordered: <%= @all_orders.ordered.count %> </p>
-<p>Paid: <%= @all_orders.paid.count %></p>
-<p>Completed: <%= @all_orders.completed.count %></p>
-<p>Cancelled: <%= @all_orders.cancelled.count %></p><br>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><%= link_to "PogHogs Admin", '/', id: "logo" %></a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><%= current_user.first_name %><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> <%= link_to "Edit My Profile", edit_user_path(current_user) %></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i><%= link_to "Log out", logout_path, method: :delete %></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="/admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/admin/items"><i class="fa fa-fw fa-bar-chart-o"></i> Items Index</a>
+                    </li>
+                    <li>
+                        <a href="/admin/items/new"><i class="fa fa-fw fa-table"></i> Create a New Item</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
 
-<h4 class="center">Orders</h4><br>
-<div class="center">
-  <%= link_to "All Orders |", admin_dashboard_path(:current_status => nil) %>
-  <%= link_to "Ordered |", admin_dashboard_path(:current_status => "ordered") %>
-  <%= link_to "Paid |", admin_dashboard_path(:current_status => "paid") %>
-  <%= link_to "Completed |", admin_dashboard_path(:current_status => "completed") %>
-  <%= link_to "Cancelled", admin_dashboard_path(:current_status => "cancelled") %>
-</div><br>
+        <div id="page-wrapper">
 
-<div class="order_list">
-  <table style="width:100%">
-    <tr>
-      <th>Order Number</th>
-      <th>Current Status</th>
-      <th>Date Placed</th>
-      <th>Updated at</th>
-      <th>Total</th>
-      <th></th>
-      <th>Change Status</th>
-    </tr>
-    <tr>
-      <% @orders.order(:id).each do |order| %>
-      <td><%= link_to "Order Number: #{order.id}", admin_order_path(order)%></td>
-      <td><%= order.status.upcase %></td>
-      <td><%= order.created_at.strftime("%d %b. %Y") %></td>
-      <td><%= order.updated_at.strftime("%l:%M%P, %d %b. %Y") %></td>
-      <td><%= order.total_price %></td>
-      <td><%= button_to "Mark as Completed", admin_order_path(order, :status => "completed"), method: :put %></td>
-              <!-- add to end of line above if client doesn't want button showing for all statuses=> if order.status == "paid" -->
-      <td><%= button_to "Cancel", admin_order_path(order, :status => "cancelled"), method: :put %></td>
-              <!-- add to end of line above if client doesn't want button showing for all statuses=> if order.status == "ordered" || order.status == "paid" -->
-      <td><%= button_to "Mark as Paid", admin_order_path(order, :status => "paid"), method: :put %></td>
-              <!-- add to end of line above if client doesn't want button showing for all statuses=> if order.status == "ordered"-->
-    </tr>
-      <% end %>
+            <div class="container-fluid">
+
+                <!-- Orders Count Table -->
+                <div class="row">
+                    <div class="col-lg-4">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Current Count of Orders by Status</h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            <a class="list-group-item">
+                              <span class="badge"><%= @all_orders.ordered.count %></span>
+                              <i class="fa fa-fw fa-calendar"></i> Ordered:
+                            </a>
+                            <a class="list-group-item">
+                              <span class="badge"><%= @all_orders.paid.count %></span>
+                              <i class="fa fa-fw fa-comment"></i> Paid:
+                            </a>
+                            <a class="list-group-item">
+                              <span class="badge"><%= @all_orders.completed.count %></span>
+                              <i class="fa fa-fw fa-truck"></i> Completed:
+                            </a>
+                            <a class="list-group-item">
+                              <span class="badge"><%= @all_orders.cancelled.count %></span>
+                              <i class="fa fa-fw fa-money"></i> Cancelled:
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <h1 class="page-header">
+                        Admin Dashboard <small>Orders Overview</small>
+                      </h1>
+                    </div>
+                </div>
+
+
+                <!-- Table Heading Row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title center"><i class="fa fa-money fa-fw"></i> Orders</h3>
+                                <div class="center">
+                                  <%= link_to "All Orders |", admin_dashboard_path(:current_status => nil) %>
+                                  <%= link_to "Ordered |", admin_dashboard_path(:current_status => "ordered") %>
+                                  <%= link_to "Paid |", admin_dashboard_path(:current_status => "paid") %>
+                                  <%= link_to "Completed |", admin_dashboard_path(:current_status => "completed") %>
+                                  <%= link_to "Cancelled", admin_dashboard_path(:current_status => "cancelled") %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <!-- Orders Table Row -->
+                      <div class="row">
+                          <div class="col-lg-12">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Order #</th>
+                                                <th>Current Status</th>
+                                                <th>Date Placed</th>
+                                                <th>Updated at</th>
+                                                <th>Amount (USD)</th>
+                                                <th>Change Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                              <% @orders.order(:id).each do |order| %>
+                                              <td><%= link_to "Order Number: #{order.id}", admin_order_path(order)%></td>
+                                              <td><%= order.status.upcase %></td>
+                                              <td><%= order.created_at.strftime("%d %b. %Y") %></td>
+                                              <td><%= order.updated_at.strftime("%l:%M%P, %d %b. %Y") %></td>
+                                              <td>$<%= order.total_price %></td>
+                                              <td><%= button_to "Cancel", admin_order_path(order, :status => "cancelled"), method: :put, :disabled => order.completed? || order.cancelled? %>
+                                                  <%= button_to "Mark as Paid", admin_order_path(order, :status => "paid"), method: :put, :disabled => order.paid? || order.completed? || order.cancelled? %>
+                                                  <%= button_to "Mark as Completed", admin_order_path(order, :status => "completed"), method: :put, :disabled => order.completed? || order.cancelled? || order.ordered? %></td>
+
+                                              <% end %>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright &copy; PogHogs 2017</p>
+        </div>
+      </div>
+    </footer>
+
+</body>

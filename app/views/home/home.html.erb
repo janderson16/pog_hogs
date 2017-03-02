@@ -27,7 +27,8 @@
 </head>
 
 <body>
-    <!-- Page Content -->
+    <%= audio_tag "poghogsaudio.mp3", controls: false, autoplay: true %>
+  <!-- Page Content -->
     <div class="container">
 
       <h1 class="home_title">PogHogs</h1>
@@ -82,6 +83,11 @@
                                 </h4>
                                 <p><%= item.description %></p>
                                 <h4 class="pull-right">$<%= item.price %></h4>
+                                <%- unless item.status == 1 -%>
+                                  <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+                                <% else %>
+                                  <h4 class="Item retired">Item Retired</h4>
+                                <% end %>
                             </div>
                             <!-- <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
@@ -104,24 +110,14 @@
         </div>
 
     </div>
-    <!-- /.container -->
-
-    <div class="container">
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; PogHogs 2017</p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
+    <!-- Footer -->
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright &copy; PogHogs 2017</p>
+        </div>
+      </div>
+    </footer>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

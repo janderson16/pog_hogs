@@ -15,10 +15,6 @@ class Cart
     contents[item_id.to_s] += 1
   end
 
-  def count_of(item_id)
-    contents[item_id.to_s]
-  end
-
   def update_cart_items(quantity)
     contents[item_id.to_s] = quantity.abs
   end
