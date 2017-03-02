@@ -18,8 +18,6 @@ require 'rails_helper'
         click_on 'My Cart'
 
         expect(page).to have_content "Lion Holographic Slammer"
-        within("div.total") do
-          expect(page).to have_content "Total: $3.29"
-        end
+        expect(page).to have_content "Total: $3.29"
     end
   end

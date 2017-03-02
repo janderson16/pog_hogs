@@ -39,7 +39,6 @@ RSpec.feature "Admin" do
       expect(page).to have_xpath("//img[contains(@src,'https://ironcladfolly.files.wordpress.com/2013/11/8ballpogs.jpg')]")
       expect(page).to have_content("30 assorted 8-ball themed pogs.")
       expect(page).to have_content("active")
-    save_and_open_page
       find_button("Edit").visible?
     end
 

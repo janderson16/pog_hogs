@@ -10,7 +10,7 @@ RSpec.feature "User" do
       expect(page).to_not have_content("These pogs rule!!!")
 
       fill_in "review[body]", with: "These pogs rule!!!"
-      click_on "Submit"
+      click_on "Leave a Review"
 
       expect(page).to have_content("These pogs rule!!!")
 
