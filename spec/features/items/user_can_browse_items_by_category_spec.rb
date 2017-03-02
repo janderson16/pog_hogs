@@ -36,7 +36,7 @@ RSpec.feature "Vistor can see all items assigned to a category" do
 
     visit category_path(slammers)
 
-    expect(current_path).to eq '/categories/slammers'
+    expect(current_path).to eq '/slammers'
     expect(page).to have_content("Slammers")
     expect(page).to have_content("T-Rex")
     expect(page).to have_content("Mike Tyson")
