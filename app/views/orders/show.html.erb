@@ -21,7 +21,7 @@ Customer Email: <%= @order.user.email %>
         <td><%= link_to order_item.item.title, category_item_path(order_item.item.category, order_item.item) %><br></td>
         <td><%= order_item.item.price %></td>
         <td><%= order_item.quantity %></td>
-        <td><%= order_item.quantity * order_item.item.price %></td><br>
+        <td><%= (order_item.quantity * order_item.item.price).round(2) %></td><br>
       <% end %>
       </tr>
     </div>

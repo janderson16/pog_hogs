@@ -123,8 +123,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                          <% @orders.order(:id).each do |order| %>
                                             <tr>
-                                              <% @orders.order(:id).each do |order| %>
                                               <td><%= link_to "Order Number: #{order.id}", admin_order_path(order)%></td>
                                               <td><%= order.status.upcase %></td>
                                               <td><%= order.created_at.strftime("%d %b. %Y") %></td>
