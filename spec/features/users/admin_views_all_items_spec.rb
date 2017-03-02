@@ -30,24 +30,24 @@ RSpec.feature "Admin" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit admin_dashboard_path
-    click_on("View Items Inventory")
+
+    click_on("Items Index")
 
     expect(current_path).to eq("/admin/items")
 
     within(".eight_ball_pack") do
-      find_link("eight_ball_pack").visible?
       expect(page).to have_xpath("//img[contains(@src,'https://ironcladfolly.files.wordpress.com/2013/11/8ballpogs.jpg')]")
       expect(page).to have_content("30 assorted 8-ball themed pogs.")
       expect(page).to have_content("active")
-      find_link("Edit").visible?
+    save_and_open_page
+      find_button("Edit").visible?
     end
 
     within(".mike_tyson") do
-      find_link("mike_tyson").visible?
       expect(page).to have_xpath("//img[contains(@src,'http://i.ebayimg.com/images/g/VS8AAOSw9r1WATVk/s-l300.jpg')]")
       expect(page).to have_content("No slammer slams harder than Iron Mike Tyson!")
       expect(page).to have_content("retired")
-      find_link("Edit").visible?
+      find_button("Edit").visible?
     end
 
   end
