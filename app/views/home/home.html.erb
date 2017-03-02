@@ -83,6 +83,11 @@
                                 </h4>
                                 <p><%= item.description %></p>
                                 <h4 class="pull-right">$<%= item.price %></h4>
+                                <%- unless item.status == 1 -%>
+                                  <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "btn btn-danger" %>
+                                <% else %>
+                                  <h4 class="Item retired">Item Retired</h4>
+                                <% end %>
                             </div>
                             <!-- <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
