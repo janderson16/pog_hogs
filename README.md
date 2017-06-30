@@ -2,7 +2,7 @@
 
 ## About the app
 
-PogHogs is an e-commerce website for 90's pog craze. Users have the ability to create an account, add items to cart and purchase as well as leave reviews about products they've bought while admins can manage stock levels, order/status and user priveleges.
+PogHogs is an e-commerce website for 90's pog craze. Users have the ability to create an account, add items to cart and purchase as well as leave reviews about products they've bought while admins can manage stock levels, order/status and user priveleges. Products are handled in a PostgreSQL database with images on paperclip. The app utilizes the Bootstrap library for styling. 
 [Production link](https://poghogs.herokuapp.com/)
 
 #### Stack
