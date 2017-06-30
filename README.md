@@ -15,7 +15,7 @@ PogHogs is an e-commerce website for 90's pog craze. Users have the ability to c
 ## Setup
 
 1. Clone down the repository
-```$ git clone git@github.com:janderson16/m4-final.git```
+```$ git clone git@github.com:janderson16/pog_hogs.git```
 1. Bundle
 ```$ bundle install```
 1. Create database
