@@ -1,24 +1,37 @@
-# README
+# PogHogs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About the app
 
-Things you may want to cover:
+PogHogs is an e-commerce website for 90's pog craze. Users have the ability to create an account, add items to cart and purchase as well as leave reviews about products they've bought while admins can manage stock levels, order/status and user priveleges.
+[Production link](https://poghogs.herokuapp.com/)
 
-* Ruby version
+#### Stack
+* Ruby 2.3.0
+* Rails 5.0.1
+* RSpec test suite w/ Capybara
+* BCrpyt
 
-* System dependencies
 
-* Configuration
+## Setup
 
-* Database creation
+1. Clone down the repository
+```$ git clone git@github.com:janderson16/m4-final.git```
+1. Bundle
+```$ bundle install```
+1. Create database
+```$ rake db:create```
+1. Migrate
+```$ rake db:migrate``` 
+1. Seed
+```$ rake db:seed```
+#### Run Locally
+1. Start server
+```$ rails s```
+1. visit localhost in broswer
+```localhost:3000``` 
 
-* Database initialization
+#### Run Test Suite
 
-* How to run the test suite
+```$ rspec```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+---
