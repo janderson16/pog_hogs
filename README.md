@@ -32,7 +32,7 @@ PogHogs is an e-commerce website for 90's pog craze. Users have the ability to c
 
 #### Run Test Suite
 
-```$ rake db:test:prepare```
-```$ rspec```
+1. ```$ rake db:test:prepare```
+1. ```$ rspec```
 
 ---
